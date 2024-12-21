@@ -1,0 +1,12 @@
+<table class="table">
+  <th>Sıra No</th>
+  <th>Şirket İsmi</th>
+  <th>Vergi Numarası</th>
+  @for (item of company;track company){
+    <tr>
+      <td>{{item.id}}</td>
+      <td>{{item.companyName}}</td>
+      <td>{{item.taxNumber}}</td>
+    </tr>
+  }
+</table>

@@ -1,10 +1,10 @@
 export interface User{
-  Id:number,
-  Name:string,
-  LastName:string,
-  Email:string,
-  PhoneNumber:string,
-  Title:string
-  Company:string,
-  Status:boolean,
+  id:number,
+  firstName:string,
+  lastName:string,
+  userEmail:string,
+  userPhone:string,
+  title:string
+  companyName:string,
+  status:boolean,
 }

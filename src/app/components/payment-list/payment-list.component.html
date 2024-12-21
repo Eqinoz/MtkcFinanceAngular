@@ -2,6 +2,7 @@
   <button (click)="exportToExcel()">Excel Export</button>
 </div>
 <table class="table">
+  <tbody>
   <th>Sıra No</th>
   <th>İsim</th>
   <th>Şirket</th>
@@ -9,7 +10,10 @@
   <th>Ödeme Yapılacak Tutar</th>
   <th>Ödeme Tipi</th>
   <th>Açıklama</th>
+  </tbody>
+  <tbody>
     @for (item of paymentLists; track paymentLists){
+
       <tr>
       <td>{{item.id}}</td>
       <td>{{item.userName}}</td>
@@ -19,8 +23,9 @@
       <td>{{item.paymentType}}</td>
       <td>{{item.description}}</td>
       </tr>
-    }
 
+    }
+  </tbody>
 
 </table>
 

@@ -1,5 +1,5 @@
 export interface Company {
-  Id:number,
-  CompanyName:string,
-  TaxNumber:number,
+  id:number,
+  companyName:string,
+  taxNumber:number,
 }

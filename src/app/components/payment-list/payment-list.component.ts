@@ -3,6 +3,7 @@ import {CurrencyPipe} from '@angular/common';
 import * as XLSX from "xlsx";
 import {Paymentlist} from '../../models/paymentlist';
 
+
 @Component({
   selector: 'app-payment-list',
   imports: [
@@ -21,8 +22,9 @@ export class PaymentListComponent implements OnInit {
 
     XLSX.writeFile(workbook,"ödeme.xlsx");
   }
+
     ngOnInit(): void {
-        throw new Error('Method not implemented.');
+
     }
 
 }

@@ -1,1 +1,20 @@
-<p>user works!</p>
+<table class="table">
+  <th>Sıra No</th>
+  <th>İsim</th>
+  <th>Mail</th>
+  <th>Telefon</th>
+  <th>Görevi</th>
+  <th>Şirket</th>
+  <th>Statu</th>
+  @for (item of users;track users){
+    <tr>
+      <td>{{item.id}}</td>
+      <td>{{item.firstName}}&nbsp;{{item.lastName}}</td>
+      <td>{{item.userEmail}}</td>
+      <td>{{item.userPhone}}</td>
+      <td>{{item.title}}</td>
+      <td>{{item.companyName}}</td>
+      <td>{{item.status}}</td>
+    </tr>
+  }
+</table>
