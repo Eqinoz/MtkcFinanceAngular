@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {CurrencyPipe} from "@angular/common";
-import {HttpClient} from '@angular/common/http';
 import {Company} from '../../models/company';
-import {CompanyResponseModel} from '../../models/companyResponseModel';
+import {CompanyService} from '../../services/company.service';
 
 @Component({
   selector: 'app-company',
@@ -14,8 +12,8 @@ import {CompanyResponseModel} from '../../models/companyResponseModel';
 })
 export class CompanyComponent implements OnInit {
   company:Company[]=[];
-  apiUrl="https://webapi79.azure-api.net/api/Companys/getall"
-  constructor(private httpClient:HttpClient) {
+
+  constructor(private companyService: CompanyService) {
   }
 
     ngOnInit(): void {
@@ -23,8 +21,7 @@ export class CompanyComponent implements OnInit {
     }
 
     getCompany(){
-    this.httpClient.get<CompanyResponseModel>(this.apiUrl)
-      .subscribe((response)=>{this.company=response.data})
+    this.companyService.getCompany().subscribe(data=>{this.company=data.data})
     }
 
 }

@@ -2,16 +2,17 @@
   <button (click)="exportToExcel()">Excel Export</button>
 </div>
 <table class="table">
-  <tbody>
-  <th>Sıra No</th>
-  <th>İsim</th>
-  <th>Şirket</th>
-  <th>Ödeme Yapılacak Firma</th>
-  <th>Ödeme Yapılacak Tutar</th>
-  <th>Ödeme Tipi</th>
-  <th>Açıklama</th>
-  </tbody>
-  <tbody>
+  <thead>
+  <tr>
+    <th>Sıra</th>
+    <th>İsim</th>
+    <th>Şirket İsmi</th>
+    <th>Ödeme Yapılacak Firma</th>
+    <th>Fiyat</th>
+    <th>Ödeme Tutarı</th>
+    <th>Açıklama</th>
+  </tr>
+  </thead>
     @for (item of paymentLists; track paymentLists){
 
       <tr>
@@ -25,7 +26,5 @@
       </tr>
 
     }
-  </tbody>
-
 </table>
 

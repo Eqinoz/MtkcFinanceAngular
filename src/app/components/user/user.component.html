@@ -1,4 +1,13 @@
+<div>
+</div>
+@if (dataLoading==false){
+  <div class="spinner-border text-info" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+}
+
 <table class="table">
+  <thead>
   <th>Sıra No</th>
   <th>İsim</th>
   <th>Mail</th>
@@ -6,6 +15,7 @@
   <th>Görevi</th>
   <th>Şirket</th>
   <th>Statu</th>
+  </thead>
   @for (item of users;track users){
     <tr>
       <td>{{item.id}}</td>
@@ -14,7 +24,12 @@
       <td>{{item.userPhone}}</td>
       <td>{{item.title}}</td>
       <td>{{item.companyName}}</td>
-      <td>{{item.status}}</td>
+      @if (item.status == true){
+        <td>Aktif</td>
+      } @else {
+        <td>Pasif</td>
+      }
     </tr>
+
   }
 </table>

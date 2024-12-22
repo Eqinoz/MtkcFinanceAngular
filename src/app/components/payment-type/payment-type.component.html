@@ -1,0 +1,15 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th>Sıra</th>
+    <th>Ödeme Tipi</th>
+  </tr>
+  </thead>
+  @for (paymentType of paymentType; track paymentType){
+    <tr>
+      <td>{{paymentType.id}}</td>
+      <td>{{paymentType.payment_Type}}</td>
+    </tr>
+  }
+
+</table>

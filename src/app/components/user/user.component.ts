@@ -1,32 +1,40 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {UserResponseModel} from '../../models/userResponseModel';
-import {response} from 'express';
 import {User} from '../../models/user';
+import {UserService} from '../../services/user.service';
 
 
 @Component({
   selector: 'app-user',
-  imports: [
-
-  ],
+  imports: [],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })
 export class UserComponent implements OnInit {
   users:User[]=[]
-  apiUrl="https://webapi79.azure-api.net/api/Users/getdetails"
+  currentUsers:User;
+  dataLoading:boolean=false;
 
 
-  constructor(private httpClient:HttpClient) {
+  constructor(private userService:UserService) {
   }
     ngOnInit(): void {
-      this.getUsers();
+      this.getUsers()
     }
 
-    getUsers(){
-        this.httpClient.get<UserResponseModel>(this.apiUrl)
-          .subscribe((response)=>{this.users = response.data;});
+    getUsers() {
+        this.userService.getUsers().subscribe(response=> {this.users=response.data})
+      this.dataLoading=true;
     }
-
+    setCurrentUser(user:User){
+    //this.currentUsers=user;
+      console.log(user.firstName);
+    }
+    getSelectUsers(user:User){
+        if (user==this.currentUsers){
+          return "table-dark"
+        }
+        else{
+          return ""
+        }
+    }
 }
