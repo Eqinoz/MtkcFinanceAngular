@@ -5,11 +5,14 @@
     <th>Ödeme Tipi</th>
   </tr>
   </thead>
-  @for (paymentType of paymentType; track paymentType){
-    <tr>
-      <td>{{paymentType.id}}</td>
-      <td>{{paymentType.payment_Type}}</td>
-    </tr>
-  }
+  <tbody>
+    @for (paymentType of paymentType; track paymentType){
+      <tr>
+        <td>{{paymentType.id}}</td>
+        <td>{{paymentType.payment_Type}}</td>
+      </tr>
+    }
+  </tbody>
+
 
 </table>

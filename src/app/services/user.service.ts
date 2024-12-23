@@ -9,11 +9,11 @@ import {User} from '../models/user';
   providedIn: 'root'
 })
 export class UserService {
-  apiUrl = 'https://webapi79.azure-api.net/api/Users/getdetails';
+  apiUrl = 'https://localhost:44317/api/Users/';
 
   constructor(private httpClient:HttpClient) { }
 
   getUsers():Observable<ListResponseModel<User>>{
-    return  this.httpClient.get<ListResponseModel<User>>(this.apiUrl);
+    return  this.httpClient.get<ListResponseModel<User>>(this.apiUrl+"getdetails");
   }
 }

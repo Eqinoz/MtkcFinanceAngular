@@ -6,11 +6,25 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page"  routerLink="/company">Şirketler</a>
-        <a class="nav-link" routerLink="/paymenttypes">Ödemeler</a>
-        <a class="nav-link" routerLink="/users">Kullanıcılar</a>
+        <a class="nav-link " (click)="setCurrentPage('Şirket')"   routerLink="/company">Şirketler</a>
+        <a class="nav-link" (click)="setCurrentPage('Ödeme')" routerLink="/paymentlist">Ödeme Listesi</a>
+        <a class="nav-link" (click)="setCurrentPage('Type')" routerLink="/paymenttypes">Ödeme Tipleri</a>
+        <a class="nav-link" (click)="setCurrentPage('Users')" routerLink="/users">Kullanıcılar</a>
         <a class="nav-link disabled" aria-disabled="true"></a>
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown link
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+
+        </div>
       </div>
     </div>
+
+
   </div>
 </nav>

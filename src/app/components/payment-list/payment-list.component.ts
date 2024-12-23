@@ -17,6 +17,7 @@ import {response} from 'express';
 export class PaymentListComponent implements OnInit {
   paymentLists: Paymentlist[] = []
 
+
   constructor(private paymentListService:PaymentListService) {
   }
   exportToExcel(){
@@ -34,5 +35,6 @@ export class PaymentListComponent implements OnInit {
     this.paymentListService.getPaymentList()
       .subscribe(response =>{this.paymentLists=response.data});
 }
+
 
 }

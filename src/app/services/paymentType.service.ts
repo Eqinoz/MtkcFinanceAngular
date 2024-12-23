@@ -9,11 +9,11 @@ import {PaymentType} from '../models/paymentType';
   providedIn: 'root'
 })
 export class PaymentTypeService {
-  apiUrl="https://webapi79.azure-api.net/api/PaymentType/getall"
+  apiUrl="https://localhost:44317/api/PaymentType/"
 
   constructor(private httpClient: HttpClient) { }
 
   getPaymentType():Observable<ListResponseModel<PaymentType>> {
-    return this.httpClient.get<ListResponseModel<PaymentType>>(this.apiUrl);
+    return this.httpClient.get<ListResponseModel<PaymentType>>(this.apiUrl+"getall");
   }
 }

@@ -1,12 +1,26 @@
 <table class="table">
+  <thead>
   <th>Sıra No</th>
   <th>Şirket İsmi</th>
   <th>Vergi Numarası</th>
-  @for (item of company;track company){
-    <tr>
-      <td>{{item.id}}</td>
-      <td>{{item.companyName}}</td>
-      <td>{{item.taxNumber}}</td>
-    </tr>
-  }
+  <th></th>
+  </thead>
+  <tbody>
+    @for (item of company;track company){
+      <tr (click)="setCurrentCompany(item)"
+          [class]="getSelectCompany(item)" >
+        <td>{{item.id}}</td>
+        <td>{{item.companyName}}</td>
+        <td>{{item.taxNumber}}</td>
+        @if (item== currentCompany){
+          <td><button
+                      type="button"
+                      class="btn btn-danger"
+                      (click)="deleteCompany(item.id,item.companyName)">Sil</button>
+          </td>
+        }
+      </tr>
+    }
+  </tbody>
+
 </table>

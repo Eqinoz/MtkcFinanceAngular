@@ -16,8 +16,9 @@
   <th>Şirket</th>
   <th>Statu</th>
   </thead>
+  <tbody>
   @for (item of users;track users){
-    <tr>
+    <tr (click)="setCurrentUser(item)" [class]="getSelectUsers(item)">
       <td>{{item.id}}</td>
       <td>{{item.firstName}}&nbsp;{{item.lastName}}</td>
       <td>{{item.userEmail}}</td>
@@ -29,7 +30,10 @@
       } @else {
         <td>Pasif</td>
       }
+      @if (item == currentUsers){
+        <td><button type="button" class="btn btn-danger">Sil</button></td>
+      }
     </tr>
-
   }
+  </tbody>
 </table>

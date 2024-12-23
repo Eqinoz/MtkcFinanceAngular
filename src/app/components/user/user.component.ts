@@ -26,8 +26,8 @@ export class UserComponent implements OnInit {
       this.dataLoading=true;
     }
     setCurrentUser(user:User){
-    //this.currentUsers=user;
-      console.log(user.firstName);
+    this.currentUsers=user;
+      //console.log(user.firstName);
     }
     getSelectUsers(user:User){
         if (user==this.currentUsers){

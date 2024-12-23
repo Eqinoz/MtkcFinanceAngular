@@ -11,4 +11,17 @@ import {RouterLink} from '@angular/router';
 })
 export class NaviComponent {
 
+  setSelectPage:string;
+
+  getSelectPage(page:string){
+    this.setSelectPage=page;
+  }
+  setCurrentPage(page:string){
+    if (page==this.setSelectPage){
+      return "nav-bar active";
+    }
+    else{
+      return "nav-bar";
+    }
+  }
 }
