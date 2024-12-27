@@ -1,0 +1,43 @@
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5>Ödeme Ekle</h5>
+        <div class="card-body">
+          <form [formGroup]="paymentListForm">
+            <div class="form-group">
+              <div class="mb-3">
+                <label>İsim</label>
+                <input type="text" id="userName" formControlName="userName" class="form-control" placeholder="İsminiz"/>
+              </div>
+              <div class="mb-3">
+                <label>Şirket İsmi</label>
+                <input type="text" id="companyName" formControlName="companyName" class="form-control" placeholder="Şirket"/>
+              </div>
+              <div class="mb-3">
+                <label>Ödeme Yapılacak Firma</label>
+                <input type="text" id="paymentOfPlace" formControlName="paymentOfPlace" class="form-control" placeholder="Ödeme Yapılacak Firma"/>
+              </div>
+              <div class="mb-3">
+                <label>Ödeme Tipi</label>
+                <input type="text" id="paymentType" formControlName="paymentType" class="form-control" placeholder="Ödeme Tipi"/>
+              </div>
+              <div class="mb-3">
+                <label>Ödeme Tutarı</label>
+                <input type="text" id="price" formControlName="price" class="form-control" placeholder="Ödeme Miktarı"/>
+              </div>
+              <div class="mb-3">
+                <label>Açıklama</label>
+                <input type="text" id="description" formControlName="description" class="form-control" placeholder="Açıklama"/>
+              </div>
+              <div class="card-footer">
+                <button type="button" class="btn btn-fill btn-primary" (click)="add()">Kaydet</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

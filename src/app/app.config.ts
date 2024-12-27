@@ -1,11 +1,14 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import {provideHttpClient} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptors} from '@angular/common/http';
 import {provideToastr} from 'ngx-toastr';
 import {provideAnimations} from '@angular/platform-browser/animations';
+import {AuthInterceptor} from './İnterceptors/auth.interceptor';
+
+
+
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),
@@ -18,5 +21,9 @@ export const appConfig: ApplicationConfig = {
       progressBar: true,
 
     }),
-  provideAnimations()]
+  provideAnimations(),
+    provideHttpClient(withInterceptors([AuthInterceptor]))//Angular17 ve üstü kullanım için interceptor ekleme
+
+
+  ]
 };

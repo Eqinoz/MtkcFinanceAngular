@@ -11,7 +11,7 @@ import {ResponseModel} from '../models/ResponseModel';
 export class CompanyService {
   apiUrl="https://localhost:44317/api/Companys/"
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient, ) { }
 
   getCompany(): Observable<ListResponseModel<Company>> {
     return  this.httpClient.get<ListResponseModel<Company>>(this.apiUrl+"getall");
@@ -21,6 +21,9 @@ export class CompanyService {
     let newUrl = this.apiUrl+"deleted?id="+id;
     // @ts-ignore
     return this.httpClient.post<ResponseModel>(newUrl);
+  }
 
+  add(company: Company):Observable<ResponseModel> {
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"add", company);
   }
 }

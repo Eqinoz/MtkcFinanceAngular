@@ -4,19 +4,22 @@ import * as XLSX from "xlsx";
 import {Paymentlist} from '../../models/paymentlist';
 import {PaymentListService} from '../../services/payment-list.service';
 import {response} from 'express';
+import {RouterLink} from '@angular/router';
+import {ExcelPaymentList} from '../../models/excel-payment-list';
 
 
 @Component({
   selector: 'app-payment-list',
   imports: [
-    CurrencyPipe
+    CurrencyPipe,
+    RouterLink
   ],
   templateUrl: './payment-list.component.html',
   styleUrl: './payment-list.component.css'
 })
 export class PaymentListComponent implements OnInit {
   paymentLists: Paymentlist[] = []
-
+  excelPaymentList: ExcelPaymentList[] = []
 
   constructor(private paymentListService:PaymentListService) {
   }
@@ -37,4 +40,7 @@ export class PaymentListComponent implements OnInit {
 }
 
 
+  add() {
+
+  }
 }
