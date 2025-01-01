@@ -6,13 +6,17 @@ import {PaymentListService} from '../../services/payment-list.service';
 import {response} from 'express';
 import {RouterLink} from '@angular/router';
 import {ExcelPaymentList} from '../../models/excel-payment-list';
+import {NaviComponent} from '../navi/navi.component';
+
 
 
 @Component({
   selector: 'app-payment-list',
   imports: [
     CurrencyPipe,
-    RouterLink
+    RouterLink,
+    NaviComponent,
+
   ],
   templateUrl: './payment-list.component.html',
   styleUrl: './payment-list.component.css'

@@ -2,11 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {PaymentListService} from '../../services/payment-list.service';
 import {ToastrService} from 'ngx-toastr';
+import {NaviComponent} from '../navi/navi.component';
 
 @Component({
   selector: 'app-payment-list-add',
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NaviComponent
   ],
   templateUrl: './payment-list-add.component.html',
   styleUrl: './payment-list-add.component.css'

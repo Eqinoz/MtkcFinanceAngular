@@ -3,14 +3,17 @@ import { Company } from '../../models/company';
 import { CompanyService } from '../../services/company.service';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NaviComponent} from '../navi/navi.component';
+
 
 
 @Component({
   selector: 'app-company',
   templateUrl: './company.component.html',
   imports: [
-    RouterLink
+    RouterLink,
+    NaviComponent,
+
   ],
   styleUrls: ['./company.component.css']
 })

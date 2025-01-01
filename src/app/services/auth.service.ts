@@ -12,6 +12,7 @@ import {SingleResponseModel} from '../models/singleResponseModel';
 })
 export class AuthService {
   apiUrl = "https://localhost:44317/api/Auth/";
+  redirectUrl:string
 
   constructor(private httpClient: HttpClient) { }
 

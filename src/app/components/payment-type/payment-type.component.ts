@@ -1,11 +1,15 @@
 import {Component, OnInit} from '@angular/core';
-import {Paymentlist} from '../../models/paymentlist';
 import {PaymentType} from '../../models/paymentType';
 import {PaymentTypeService} from '../../services/paymentType.service';
+import {NaviComponent} from '../navi/navi.component';
+
 
 @Component({
   selector: 'app-payment-type',
-  imports: [],
+  imports: [
+    NaviComponent
+
+  ],
   templateUrl: './payment-type.component.html',
   styleUrl: './payment-type.component.css'
 })

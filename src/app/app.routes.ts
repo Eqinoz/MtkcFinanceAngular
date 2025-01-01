@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {UserComponent} from './components/user/user.component';
 import {CompanyComponent} from './components/company/company.component';
 import {PaymentTypeComponent} from './components/payment-type/payment-type.component';
@@ -8,16 +8,28 @@ import {CompanyAddComponent} from './components/company-add/company-add.componen
 import {PaymentListAddComponent} from './components/payment-list-add/payment-list-add.component';
 import {UserAddComponent} from './components/user-add/user-add.component';
 import {LoginComponent} from './components/login/login.component';
+import {NgModule} from '@angular/core';
+import {loginGuard} from './guards/login.guard';
+import {roleGuardGuard} from './guards/role-guard.guard';
 
 export const routes: Routes = [
-  {path:"",  component:HomeComponent},
-  {path:"company", component:CompanyComponent},
-  {path:"company/add", component:CompanyAddComponent},
-  {path:"company/:id", component:CompanyComponent },
-  {path:"users", component:UserComponent},
-  {path:"users/add", component:UserAddComponent},
-  {path:"paymenttypes", component:PaymentTypeComponent},
-  {path:"paymentlist", component:PaymentListComponent},
-  {path:"paymentlist/add", component:PaymentListAddComponent},
-  {path:"login", component:LoginComponent},
+  {path:"",  component:HomeComponent, canActivate:[loginGuard]},
+  {path:"company", component:CompanyComponent , canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin"]}},
+  {path:"company/add", component:CompanyAddComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin"]}},
+  {path:"company/:id", component:CompanyComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin"]} },
+
+  {path:"users", component:UserComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin"]}},
+  {path:"add", component:UserAddComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin"]}},
+
+  {path:"paymenttypes", component:PaymentTypeComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin"]}},
+  {path:"paymentlist", component:PaymentListComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe"]}},
+
+  {path:"paymentlist/add", component:PaymentListAddComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe"]}},
+
+  {path:"login",  component:LoginComponent},
 ];
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppModule {}

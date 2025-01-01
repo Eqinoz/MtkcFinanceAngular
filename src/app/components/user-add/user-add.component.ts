@@ -2,13 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 import {AuthService} from '../../services/auth.service';
+import {NaviComponent} from "../navi/navi.component";
 
 @Component({
   selector: 'app-user-add',
-  imports: [
-    FormsModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        NaviComponent
+    ],
   templateUrl: './user-add.component.html',
   styleUrl: './user-add.component.css'
 })

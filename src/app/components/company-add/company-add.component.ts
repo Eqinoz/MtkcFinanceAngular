@@ -2,11 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {FormsModule, ReactiveFormsModule, FormBuilder, Validators, FormControl, FormGroup} from '@angular/forms';
 import {CompanyService} from '../../services/company.service';
 import {ToastrService} from 'ngx-toastr';
+import {NaviComponent} from '../navi/navi.component';
 
 @Component({
   selector: 'app-company-add',
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NaviComponent
   ],
   templateUrl: './company-add.component.html',
   styleUrl: './company-add.component.css'

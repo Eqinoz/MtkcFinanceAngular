@@ -2,12 +2,16 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../../models/user';
 import {UserService} from '../../services/user.service';
 import {RouterLink} from '@angular/router';
+import {NaviComponent} from '../navi/navi.component';
+
 
 
 @Component({
   selector: 'app-user',
   imports: [
-    RouterLink
+    RouterLink,
+    NaviComponent,
+
   ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
