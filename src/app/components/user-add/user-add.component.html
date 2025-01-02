@@ -14,11 +14,11 @@
             <div class="form-group">
               <div class="mb-3">
                 <label>İsim</label>
-                <input type="text" id="firsName" formControlName="firstName" class="form-control" placeholder="İsim"/>
+                <input type="text"   id="firsName" formControlName="firstName" class="form-control" placeholder="İsim" aria-label="Disabled input example" readonly/>
               </div>
               <div class="mb-3">
                 <label>Soyisim</label>
-                <input type="text" id="lastName" formControlName="lastName" class="form-control" placeholder="Soyisim"/>
+                <input type="text" id="lastName" formControlName="lastName" class="form-control" placeholder="Soyisim" readonly/>
               </div>
               <div class="mb-3">
                 <label>Email</label>
@@ -56,11 +56,23 @@
               </div>
               <div class="mb-3">
                 <label>Ünvan</label>
-                <input type="text" id="titleName" formControlName="titleName" class="form-control" placeholder="Ünvan"/>
+                <select class="form-select" aria-label="Default select example" formControlName="titleName">
+                  <option selected>Açılır Menüden Ünvan Seçiniz</option>
+                  @for (item of titles;track titles){
+                    <option value="{{item.titleName}}"  >{{item.titleName}}</option>
+                  }
+
+                </select>
               </div>
               <div class="mb-3">
                 <label>Şirket İsmi</label>
-                <input type="text" id="companyName" formControlName="companyName" class="form-control" placeholder="Şirket İsmi"/>
+                <select class="form-select" aria-label="Default select example" formControlName="companyName">
+                  <option selected>Açılır Menüden Şirket Seçiniz</option>
+                  @for (item of companyies;track companyies){
+                    <option value="{{item.companyName}}"   >{{item.companyName}}</option>
+                  }
+
+                </select>
               </div>
               <div class="card-footer">
                 <button type="button" class="btn btn-fill btn-primary" (click)="add()">Kaydet</button>

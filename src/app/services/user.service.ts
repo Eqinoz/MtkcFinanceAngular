@@ -11,12 +11,14 @@ import {ResponseModel} from '../models/ResponseModel';
 })
 export class UserService {
   apiUrl = 'https://localhost:44317/api/Users/';
-  addApiUrl:string ="https://localhost:44317/api/Auth/register";
 
   constructor(private httpClient:HttpClient) { }
 
   getUsers():Observable<ListResponseModel<User>>{
     return  this.httpClient.get<ListResponseModel<User>>(this.apiUrl+"getdetails");
+  }
+  delUsers(id:number):Observable<ResponseModel> {
+    return this.httpClient.delete<ResponseModel>(this.apiUrl+"del/?id="+id);
   }
 
 }

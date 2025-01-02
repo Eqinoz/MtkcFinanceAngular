@@ -14,12 +14,12 @@ import {roleGuardGuard} from './guards/role-guard.guard';
 
 export const routes: Routes = [
   {path:"",  component:HomeComponent, canActivate:[loginGuard]},
-  {path:"company", component:CompanyComponent , canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin"]}},
-  {path:"company/add", component:CompanyAddComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin"]}},
-  {path:"company/:id", component:CompanyComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin"]} },
+  {path:"company", component:CompanyComponent , canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe"]}},
+  {path:"company/add", component:CompanyAddComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe"]}},
+  {path:"company/:id", component:CompanyComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe"]} },
 
-  {path:"users", component:UserComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin"]}},
-  {path:"add", component:UserAddComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin"]}},
+  {path:"users", component:UserComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe"]}},
+  {path:"users/add", component:UserAddComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe"]}},
 
   {path:"paymenttypes", component:PaymentTypeComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin"]}},
   {path:"paymentlist", component:PaymentListComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe"]}},

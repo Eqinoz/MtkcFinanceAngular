@@ -25,8 +25,17 @@ export class JwtService {
   getUserName(token: string): string | null {
     const decodedToken = this.decodeToken(token);
     if (decodedToken) {
-      return decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
+      const name = decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"];
+      return name ? this.decodeUtf8(name) : null;
     }
     return null;
+  }
+
+  private decodeUtf8(text: string): string {
+    try {
+      return decodeURIComponent(escape(text)); // UTF-8 kodlamasını düzelt
+    } catch (e) {
+      return text; // Herhangi bir hata varsa, orijinal metni döndür
+    }
   }
 }

@@ -33,7 +33,7 @@
         <td>Pasif</td>
       }
       @if (item == currentUsers){
-        <td><button type="button" class="btn btn-danger">Sil</button></td>
+        <td><button type="button" class="btn btn-danger" (click)="deleteUser(item)">Sil</button></td>
       }
     </tr>
   }

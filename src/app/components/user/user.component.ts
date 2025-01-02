@@ -3,6 +3,7 @@ import {User} from '../../models/user';
 import {UserService} from '../../services/user.service';
 import {RouterLink} from '@angular/router';
 import {NaviComponent} from '../navi/navi.component';
+import {ToastrService} from 'ngx-toastr';
 
 
 
@@ -20,9 +21,10 @@ export class UserComponent implements OnInit {
   users:User[]=[]
   currentUsers:User;
   dataLoading:boolean=false;
+  responseModel:string;
 
 
-  constructor(private userService:UserService) {
+  constructor(private userService:UserService, private toastrService:ToastrService) {
   }
     ngOnInit(): void {
       this.getUsers()
@@ -44,4 +46,16 @@ export class UserComponent implements OnInit {
           return ""
         }
     }
+    deleteUser(user:User){
+    this.userService.delUsers(user.id).subscribe(response=> {
+      this.responseModel=response.message;
+      //this.users= this.users.filter(user=>user.id !== user.id)
+      window.location.reload();
+      this.toastrService.success('User deleted successfully.',user.firstName+' '+user.lastName);
+
+
+
+    })
+    }
+
 }
