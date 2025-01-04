@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ListResponseModel} from '../models/listResponseModel';
 import {PaymentType} from '../models/paymentType';
+import {ResponseModel} from '../models/ResponseModel';
 
 
 @Injectable({
@@ -15,5 +16,9 @@ export class PaymentTypeService {
 
   getPaymentType():Observable<ListResponseModel<PaymentType>> {
     return this.httpClient.get<ListResponseModel<PaymentType>>(this.apiUrl+"getall");
+  }
+  addPaymentType(paymentType:PaymentType):Observable<ListResponseModel<PaymentType>>{
+    return this.httpClient.post<ListResponseModel<PaymentType>>(this.apiUrl+"add",paymentType);
+
   }
 }

@@ -11,6 +11,8 @@ import {LoginComponent} from './components/login/login.component';
 import {NgModule} from '@angular/core';
 import {loginGuard} from './guards/login.guard';
 import {roleGuardGuard} from './guards/role-guard.guard';
+import {PaymentTypeAddComponent} from './components/payment-type-add/payment-type-add.component';
+import {HistorypaymentlistComponent} from './components/historypaymentlist/historypaymentlist.component';
 
 export const routes: Routes = [
   {path:"",  component:HomeComponent, canActivate:[loginGuard]},
@@ -22,9 +24,13 @@ export const routes: Routes = [
   {path:"users/add", component:UserAddComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe"]}},
 
   {path:"paymenttypes", component:PaymentTypeComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin"]}},
-  {path:"paymentlist", component:PaymentListComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe"]}},
+  {path:"paymenttypes/add", component:PaymentTypeAddComponent},
 
+
+  {path:"paymentlist", component:PaymentListComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe"]}},
   {path:"paymentlist/add", component:PaymentListAddComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe"]}},
+
+  {path:"historypaymentlist", component:HistorypaymentlistComponent,canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe"]}},
 
   {path:"login",  component:LoginComponent},
 ];

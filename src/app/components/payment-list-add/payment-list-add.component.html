@@ -9,7 +9,7 @@
             <div class="form-group">
               <div class="mb-3">
                 <label>İsim</label>
-                <input type="text" id="userName" formControlName="userName" class="form-control" placeholder="İsminiz"/>
+                <input type="text" id="userName" formControlName="userName" class="form-control" placeholder="İsminiz" readonly/>
               </div>
               <div class="mb-3">
                 <label>Şirket İsmi</label>
@@ -21,7 +21,13 @@
               </div>
               <div class="mb-3">
                 <label>Ödeme Tipi</label>
-                <input type="text" id="paymentType" formControlName="paymentType" class="form-control" placeholder="Ödeme Tipi"/>
+                <select class="form-select" aria-label="Default select example" formControlName="paymentType">
+                  <option selected>Açılır Menüden Ödeme Tipini Seçiniz</option>
+                  @for (item of paymentType;track paymentType){
+                    <option value="{{item.payment_Type}}"  >{{item.payment_Type}}</option>
+                  }
+
+                </select>
               </div>
               <div class="mb-3">
                 <label>Ödeme Tutarı</label>

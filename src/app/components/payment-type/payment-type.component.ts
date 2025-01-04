@@ -2,14 +2,16 @@ import {Component, OnInit} from '@angular/core';
 import {PaymentType} from '../../models/paymentType';
 import {PaymentTypeService} from '../../services/paymentType.service';
 import {NaviComponent} from '../navi/navi.component';
+import {RouterLink} from "@angular/router";
 
 
 @Component({
   selector: 'app-payment-type',
-  imports: [
-    NaviComponent
+    imports: [
+        NaviComponent,
+        RouterLink
 
-  ],
+    ],
   templateUrl: './payment-type.component.html',
   styleUrl: './payment-type.component.css'
 })

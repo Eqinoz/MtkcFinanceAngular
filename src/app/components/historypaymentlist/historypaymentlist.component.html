@@ -1,6 +1,5 @@
 <app-navi></app-navi>
 <div>
-  <button type="button" class="btn btn-success" (click)="exportToExcel()">Excel Export</button>
   <button type="button" class="btn btn-info" routerLink="add">Ekle</button>
 </div>
 <table class="table">
@@ -14,31 +13,23 @@
     <th>Fiyat</th>
     <th>Ödeme Tutarı</th>
     <th>Açıklama</th>
+    <th>Ödemenin Yapıldığı Tarih</th>
   </tr>
   </thead>
-  <tbody>
-    @for (item of paymentLists; track paymentLists){
+  @for (item of historyPaymentList; track historyPaymentList){
 
-      <tr (click)="setCurrentPayment(item)" [class]="getSelectPayment(item)">
+    <tr>
       <td>{{item.id}}</td>
       <td>{{item.userName}}</td>
-        <td>{{item.dateAdded|date: "dd/MM/yyyy"}}</td>
+      <td>{{item.dateAdded|date: "dd/MM/yyyy"}}</td>
       <td>{{item.companyName}}</td>
       <td>{{item.paymentOfPlace}}</td>
       <td>{{item.price|currency:"TRY":"₺"}}</td>
       <td>{{item.paymentType}}</td>
       <td>{{item.description}}</td>
-        @if (item==currentPaymentList){
-          <td>
-            <button
-              type="button"
-              class="btn btn-success"
-              (click)="addHistoryPayment(item);deletePayment(item.id)">Öde</button>
-          </td>
-        }
-      </tr>
+      <td>{{item.datePaid|date: "dd/MM/yyyy"}}</td>
+    </tr>
 
-    }
-  </tbody>
+  }
 </table>
 

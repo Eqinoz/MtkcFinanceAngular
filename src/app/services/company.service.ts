@@ -18,9 +18,9 @@ export class CompanyService {
 
   }
   deletedCompany(id:number): Observable<ResponseModel> {
-    let newUrl = this.apiUrl+"deleted?id="+id;
+   // let newUrl = this.apiUrl+"deleted?id="+id;
     // @ts-ignore
-    return this.httpClient.post<ResponseModel>(newUrl);
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"delete", id);
   }
 
   add(company: Company):Observable<ResponseModel> {

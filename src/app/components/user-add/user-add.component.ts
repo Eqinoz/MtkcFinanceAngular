@@ -4,10 +4,7 @@ import {ToastrService} from 'ngx-toastr';
 import {AuthService} from '../../services/auth.service';
 import {NaviComponent} from "../navi/navi.component";
 import {CompanyService} from '../../services/company.service';
-import {ListResponseModel} from '../../models/listResponseModel';
-import {Company} from '../../models/company';
 import {TitleService} from '../../services/title.service';
-import {JwtService} from '../../services/jwthelper.service';
 
 @Component({
   selector: 'app-user-add',
@@ -25,16 +22,14 @@ export class UserAddComponent implements OnInit {
   pswClass: string = "bi bi-eye";
   companyies:any[];
   titles:any[];
-  FirstName:string;
-  LastName:string;
+
 
   constructor(private formBuilder: FormBuilder, private registerService: AuthService,
               private toastrService: ToastrService, private companyService: CompanyService,
-              private titleService: TitleService, private jwtService: JwtService) {
+              private titleService: TitleService, ) {
   }
 
   ngOnInit(): void {
-    this.getUserName()
     this.createAddUserForm()
     this.getCompany()
     this.getTitle()
@@ -42,8 +37,8 @@ export class UserAddComponent implements OnInit {
 
   createAddUserForm() {
     this.userAddForm = this.formBuilder.group({
-      firstName: [this.FirstName, [Validators.required]],
-      lastName: [this.LastName, [Validators.required]],
+      firstName: ["", [Validators.required]],
+      lastName: ["", [Validators.required]],
       mail: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       phone: ['', [Validators.required, Validators.minLength(10)]],
@@ -110,10 +105,5 @@ export class UserAddComponent implements OnInit {
       this.titles = response.data;
     })
   }
-  getUserName() {
-    const UserName = this.jwtService.getUserName(localStorage.getItem("token"))
-    var splitted = UserName.split(" ");
-    this.FirstName= splitted[0];
-    this.LastName= splitted[1];
-  }
+
 }

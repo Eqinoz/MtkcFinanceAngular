@@ -20,4 +20,7 @@ export class PaymentListService {
   add(paymentList:Paymentlist):Observable<ResponseModel>{
     return this.httpClient.post<ResponseModel>(this.apiUrl+"add",paymentList);
   }
+  del(id:number):Observable<ResponseModel>{
+    return this.httpClient.delete<ResponseModel>(this.apiUrl+"deleted/?id="+id);
+  }
 }

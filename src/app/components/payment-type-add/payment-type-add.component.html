@@ -1,0 +1,25 @@
+<app-navi></app-navi>
+<div class="content">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5>Ödeme Tipi Ekle</h5>
+        <div class="card-body">
+          <form [formGroup]="paymentTypeAddForm">
+            <div class="form-group">
+              <div class="mb-3">
+                <label>Ödeme Tipi</label>
+                <input type="text" id="payment_Type" formControlName="payment_Type" class="form-control" placeholder="Ödeme Tipi"/><br>
+              </div>
+
+              <div class="card-footer">
+                <button type="button" class="btn btn-fill btn-primary" (click)="add()">Kaydet</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
