@@ -13,7 +13,13 @@
               </div>
               <div class="mb-3">
                 <label>Şirket İsmi</label>
-                <input type="text" id="companyName" formControlName="companyName" class="form-control" placeholder="Şirket"/>
+                <select class="form-select" aria-label="Default select example" formControlName="companyName">
+                  <option selected>Açılır Menüden Şirket Seçiniz</option>
+                  @for (item of companies;track companies){
+                    <option value="{{item.companyName}}"  >{{item.companyName}}</option>
+                  }
+
+                </select>
               </div>
               <div class="mb-3">
                 <label>Ödeme Yapılacak Firma</label>

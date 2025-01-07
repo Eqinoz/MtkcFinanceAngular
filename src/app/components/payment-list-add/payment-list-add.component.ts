@@ -5,6 +5,7 @@ import {ToastrService} from 'ngx-toastr';
 import {NaviComponent} from '../navi/navi.component';
 import {JwtService} from '../../services/jwthelper.service';
 import {PaymentTypeService} from '../../services/paymentType.service';
+import {CompanyService} from '../../services/company.service';
 
 @Component({
   selector: 'app-payment-list-add',
@@ -19,14 +20,16 @@ export class PaymentListAddComponent implements OnInit {
   paymentListForm: FormGroup;
   userName: string;
   paymentType: any[];
+  companies: any[];
 
 
   constructor(private formBuilder: FormBuilder, private paymentListService:PaymentListService,
               private toastrService: ToastrService, private jwtService: JwtService,
-              private paymentTypeService:PaymentTypeService,) {
+              private paymentTypeService:PaymentTypeService, private companyService: CompanyService) {
   }
 
     ngOnInit(): void {
+    this.getCompany();
         this.getUserName();
         this.getPaymentType();
         this.createPaymentListAddForm();
@@ -62,6 +65,11 @@ export class PaymentListAddComponent implements OnInit {
     this.paymentTypeService.getPaymentType().subscribe(data => {
       this.paymentType=data.data
     })
+    }
+
+    getCompany(){
+    this.companyService.getCompany().subscribe(data => {
+      this.companies=data.data})
     }
 
 }

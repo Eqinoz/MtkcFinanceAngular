@@ -19,6 +19,8 @@ export class PaymentTypeService {
   }
   addPaymentType(paymentType:PaymentType):Observable<ListResponseModel<PaymentType>>{
     return this.httpClient.post<ListResponseModel<PaymentType>>(this.apiUrl+"add",paymentType);
-
+  }
+  delPaymentType(id:number):Observable<ResponseModel> {
+    return this.httpClient.delete<ResponseModel>(this.apiUrl+"deleted?id="+id);
   }
 }

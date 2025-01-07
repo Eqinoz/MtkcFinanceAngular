@@ -40,11 +40,13 @@ export class CompanyComponent implements OnInit {
   }
 
   deleteCompany(id: number,name:string): void {
+    console.log(id);
+    console.log("Çalıştı");
 
     this.companyService.deletedCompany(id).subscribe((data) => {
       this.responseModels = data.message;
       this.company = this.company.filter((item) => item.id !== id); // Silinen şirketi listeden kaldırır
-      this.toastr.error("Deleting the company",name,{positionClass:"toast-bottom-right"});
+      this.toastr.error(this.responseModels,"Silindi!");
     });
   }
 n

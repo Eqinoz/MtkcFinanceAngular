@@ -17,10 +17,10 @@
   </tr>
   </thead>
   <tbody>
-    @for (item of paymentLists; track paymentLists){
+    @for (item of paymentLists; track paymentLists.keys(); let i=$index){
 
       <tr (click)="setCurrentPayment(item)" [class]="getSelectPayment(item)">
-      <td>{{item.id}}</td>
+      <td>{{i+1}}</td>
       <td>{{item.userName}}</td>
         <td>{{item.dateAdded|date: "dd/MM/yyyy"}}</td>
       <td>{{item.companyName}}</td>

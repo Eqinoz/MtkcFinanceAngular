@@ -6,7 +6,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        @if (userRole=="Admin" || userRole=="Muhasebe"){
+        @if (userRole=="Admin" || userRole=="Muhasebe" || userRole=="Genel Müdür"){
           <a class="nav-link " (click)="setCurrentPage('Şirket')"   routerLink="/company">Şirketler</a>
           <a class="nav-link" (click)="setCurrentPage('Type')" routerLink="/paymenttypes">Ödeme Tipleri</a>
           <a class="nav-link" (click)="setCurrentPage('Users')" routerLink="/users">Kullanıcılar</a>
@@ -18,9 +18,20 @@
 
 
       </div>
-      <a class="nav-link" (click)="logout()" routerLink="/login">Çıkış</a>
+
     </div>
-    <label>{{userName}}</label>
+    <div class="btn-group">
+      <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        {{userName}}
+      </button>
+      <ul class="dropdown-menu">
+
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" (click)="logout()" routerLink="/login">Çıkış</a></li>
+      </ul>
+    </div>
 
   </div>
 </nav>

@@ -16,10 +16,11 @@
     <th>Ödemenin Yapıldığı Tarih</th>
   </tr>
   </thead>
-  @for (item of historyPaymentList; track historyPaymentList){
+  <tbody>
+  @for (item of historyPaymentList; track historyPaymentList.keys();let i = $index){
 
     <tr>
-      <td>{{item.id}}</td>
+      <td>{{i +1}}</td>
       <td>{{item.userName}}</td>
       <td>{{item.dateAdded|date: "dd/MM/yyyy"}}</td>
       <td>{{item.companyName}}</td>
@@ -31,5 +32,6 @@
     </tr>
 
   }
+  </tbody>
 </table>
 

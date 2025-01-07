@@ -24,11 +24,7 @@ export class AuthService {
 
   }
   isAuthenticated(){
-    if (localStorage.getItem("token")){
-      return true;
-    }
-    else{
-      return false;
-    }
+    const token = localStorage.getItem("token");
+    return token ? true : false;
   }
 }

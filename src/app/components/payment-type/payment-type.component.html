@@ -8,11 +8,20 @@
   </tr>
   </thead>
   <tbody>
-    @for (paymentType of paymentType; track paymentType){
-      <tr>
-        <td>{{paymentType.id}}</td>
+    @for (paymentType of paymentType; let i=$index;track paymentType){
+      <tr (click)="setCurrentPaymentType(paymentType)"
+          [class]="getSelectType(paymentType)">
+        <td>{{i + 1}}</td>
         <td>{{paymentType.payment_Type}}</td>
+        @if (paymentType== currentPaymnetTpe){
+          <td><button
+            type="button"
+            class="btn btn-danger"
+            (click)="deletePaymentType(paymentType.id)">Sil</button>
+          </td>
+        }
       </tr>
+
     }
   </tbody>
 

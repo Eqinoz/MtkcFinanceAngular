@@ -24,6 +24,7 @@ export class NaviComponent implements OnInit {
     if (token) {
       this.userRole = this.jwtService.getUserRole(token);
       this.userName = this.jwtService.getUserName(token);
+
     }
   }
 
@@ -41,4 +42,6 @@ export class NaviComponent implements OnInit {
   logout() {
     localStorage.clear();
   }
+
+
 }

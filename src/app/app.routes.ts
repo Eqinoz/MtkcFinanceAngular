@@ -13,26 +13,28 @@ import {loginGuard} from './guards/login.guard';
 import {roleGuardGuard} from './guards/role-guard.guard';
 import {PaymentTypeAddComponent} from './components/payment-type-add/payment-type-add.component';
 import {HistorypaymentlistComponent} from './components/historypaymentlist/historypaymentlist.component';
+import {PagenotfoundComponent} from './components/pagenotfound/pagenotfound.component';
 
 export const routes: Routes = [
   {path:"",  component:HomeComponent, canActivate:[loginGuard]},
-  {path:"company", component:CompanyComponent , canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe"]}},
-  {path:"company/add", component:CompanyAddComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe"]}},
-  {path:"company/:id", component:CompanyComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe"]} },
+  {path:"company", component:CompanyComponent , canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe","Genel Müdür"]}},
+  {path:"company/add", component:CompanyAddComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe","Genel Müdür"]}},
+  {path:"company/:id", component:CompanyComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe","Genel Müdür"]} },
 
-  {path:"users", component:UserComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe"]}},
-  {path:"users/add", component:UserAddComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe"]}},
+  {path:"users", component:UserComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe","Genel Müdür"]}},
+  {path:"users/add", component:UserAddComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe","Genel Müdür"]}},
 
-  {path:"paymenttypes", component:PaymentTypeComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin"]}},
+  {path:"paymenttypes", component:PaymentTypeComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe","Genel Müdür"]}},
   {path:"paymenttypes/add", component:PaymentTypeAddComponent},
 
 
-  {path:"paymentlist", component:PaymentListComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe"]}},
-  {path:"paymentlist/add", component:PaymentListAddComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe"]}},
+  {path:"paymentlist", component:PaymentListComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe","Genel Müdür"]}},
+  {path:"paymentlist/add", component:PaymentListAddComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe","Genel Müdür"]}},
 
-  {path:"historypaymentlist", component:HistorypaymentlistComponent,canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe"]}},
+  {path:"historypaymentlist", component:HistorypaymentlistComponent,canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe","Genel Müdür"]}},
 
   {path:"login",  component:LoginComponent},
+  {path:"**", pathMatch:"full", component:PagenotfoundComponent}
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

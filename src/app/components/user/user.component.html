@@ -19,9 +19,9 @@
   <th>Statu</th>
   </thead>
   <tbody>
-  @for (item of users;track users){
+  @for (item of users;track users.keys();let i = $index){
     <tr (click)="setCurrentUser(item)" [class]="getSelectUsers(item)">
-      <td>{{item.id}}</td>
+      <td>{{i +1}}</td>
       <td>{{item.firstName}}&nbsp;{{item.lastName}}</td>
       <td>{{item.userEmail}}</td>
       <td>{{item.userPhone}}</td>
