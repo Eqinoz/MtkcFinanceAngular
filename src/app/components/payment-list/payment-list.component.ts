@@ -11,6 +11,8 @@ import {Company} from '../../models/company';
 import {HistoryPaymentList} from '../../models/HistoryPaymentList';
 import {HistoryPaymentListService} from '../../services/history-payment-list.service';
 import {ToastrService} from 'ngx-toastr';
+import {JwtService} from '../../services/jwthelper.service';
+import {iterator} from 'rxjs/internal/symbol/iterator';
 
 
 
@@ -28,14 +30,15 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class PaymentListComponent implements OnInit {
   paymentLists: Paymentlist[] = []
+  filterPaymentList: any[] = []
   excelPaymentList: ExcelPaymentList[] = []
   paymentList: Paymentlist[] = []
   currentPaymentList: Paymentlist| null = null;
-  history: HistoryPaymentList ;
   responseModel: string;
+  userRole: string;
 
   constructor(private paymentListService:PaymentListService,private historyPayment: HistoryPaymentListService,
-              private toastr: ToastrService,) {
+              private toastr: ToastrService, private jwtService: JwtService) {
   }
   exportToExcel(){
     const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.paymentLists);
@@ -47,10 +50,23 @@ export class PaymentListComponent implements OnInit {
 
     ngOnInit(): void {
         this.getPaymentList();
+      const token = localStorage.getItem('token');
+      if (token) {
+        this.userRole = this.jwtService.getUserRole(token);}
     }
     getPaymentList(){
     this.paymentListService.getPaymentList()
-      .subscribe(response =>{this.paymentLists=response.data});
+      .subscribe(response =>{
+        if (this.userRole == 'Admin' || this.userRole == 'Ceo' || this.userRole == 'Muhasebe' || this.userRole == 'Genel Müdür'){
+          this.paymentLists=response.data;
+        }
+        else if(this.userRole == 'İşletme Müdürü'){
+          this.paymentLists=response.data.filter(item => item.title=="İşletme Müdürü" || item.title=="İdari Personel");
+        }
+        else if(this.userRole == 'İdari Personel'){
+          this.paymentLists=response.data.filter(item => item.title=="İdari Personel");
+        }
+      });
 }
   setCurrentPayment(paymentList:Paymentlist): void {
     this.currentPaymentList = paymentList;
@@ -61,10 +77,12 @@ export class PaymentListComponent implements OnInit {
   }
 
 
+
   addHistoryPayment(payment:Paymentlist) {
     const updatedHistory: HistoryPaymentList = {
       id: payment.id, // Eğer bir id gerekliyse
       userName: payment.userName,
+      title: payment.title,
       dateAdded: payment.dateAdded,
       companyName: payment.companyName,
       paymentOfPlace: payment.paymentOfPlace,

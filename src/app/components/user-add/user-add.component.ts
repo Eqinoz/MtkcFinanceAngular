@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, signal} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
 import {AuthService} from '../../services/auth.service';
@@ -6,22 +6,24 @@ import {NaviComponent} from "../navi/navi.component";
 import {CompanyService} from '../../services/company.service';
 import {TitleService} from '../../services/title.service';
 
+
 @Component({
   selector: 'app-user-add',
-    imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        NaviComponent
-    ],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    NaviComponent,
+  ],
   templateUrl: './user-add.component.html',
   styleUrl: './user-add.component.css'
 })
 export class UserAddComponent implements OnInit {
   userAddForm: FormGroup;
   pswShow: boolean = false;
-  pswClass: string = "bi bi-eye";
+  pswClass: string = "bi bi-eye-slash";
   companyies:any[];
   titles:any[];
+
 
 
   constructor(private formBuilder: FormBuilder, private registerService: AuthService,
@@ -55,11 +57,10 @@ export class UserAddComponent implements OnInit {
           this.toastrService.success('Kullanıcı Eklendi');
         },
         error: err => {
-          console.log(err);
-          if (err.error.Error.length > 0) {
-            for (let i = 0; i < err.error.Error.length; i++) {
-              this.toastrService.error(err.error.Error[i].ErrorMessage, "Doğrulama Hatası");
-            }
+          console.log(err.error);
+          if (err.error) {
+              this.toastrService.error(err.error[2], "Doğrulama Hatası");
+
           }
         },
       });
@@ -83,11 +84,11 @@ export class UserAddComponent implements OnInit {
 
   pswHidden() {
     if (this.pswShow == true) {
-      this.pswClass = "bi bi-eye"
+      this.pswClass = "bi bi-eye-slash"
       console.log(this.pswClass)
 
     } else if (this.pswShow == false) {
-      this.pswClass = "bi bi-eye-slash"
+      this.pswClass = "bi bi-eye"
       console.log(this.pswClass);
 
     }

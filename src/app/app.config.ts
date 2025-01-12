@@ -6,7 +6,9 @@ import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptors} from '@angular/c
 import {provideToastr} from 'ngx-toastr';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {AuthInterceptor} from './İnterceptors/auth.interceptor';
-import {provideCharts} from 'ng2-charts';
+import {provideCharts,withDefaultRegisterables} from 'ng2-charts';
+import {BarController, Colors, Legend} from 'chart.js';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 
 
@@ -25,7 +27,7 @@ export const appConfig: ApplicationConfig = {
   provideAnimations(),
     provideHttpClient(withInterceptors([AuthInterceptor])),//Angular17 ve üstü kullanım için interceptor ekleme
 
-    provideCharts(),
+    provideCharts({ registerables: [BarController, Legend, Colors] }),
 
 
   ]

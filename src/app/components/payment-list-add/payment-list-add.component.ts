@@ -19,6 +19,7 @@ import {CompanyService} from '../../services/company.service';
 export class PaymentListAddComponent implements OnInit {
   paymentListForm: FormGroup;
   userName: string;
+  title:string;
   paymentType: any[];
   companies: any[];
 
@@ -31,6 +32,7 @@ export class PaymentListAddComponent implements OnInit {
     ngOnInit(): void {
     this.getCompany();
         this.getUserName();
+        this.getTitle()
         this.getPaymentType();
         this.createPaymentListAddForm();
 
@@ -38,6 +40,7 @@ export class PaymentListAddComponent implements OnInit {
     createPaymentListAddForm(){
       this.paymentListForm = this.formBuilder.group({
         userName: [this.userName, Validators.required],
+        title: [this.title, Validators.required],
         companyName: ['', Validators.required],
         paymentOfPlace: ['', Validators.required],
         paymentType: ['', Validators.required],
@@ -59,6 +62,10 @@ export class PaymentListAddComponent implements OnInit {
     getUserName(){
     this.userName=this.jwtService.getUserName(localStorage.getItem("token"));
     console.log(this.userName)
+    }
+
+    getTitle(){
+    this.title=this.jwtService.getUserRole(localStorage.getItem("token"));
     }
 
     getPaymentType(){

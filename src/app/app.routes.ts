@@ -28,10 +28,10 @@ export const routes: Routes = [
   {path:"paymenttypes/add", component:PaymentTypeAddComponent},
 
 
-  {path:"paymentlist", component:PaymentListComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe","Genel Müdür"]}},
-  {path:"paymentlist/add", component:PaymentListAddComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe","Genel Müdür"]}},
+  {path:"paymentlist", component:PaymentListComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe","Genel Müdür","İdari Personel"]}},
+  {path:"paymentlist/add", component:PaymentListAddComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe","Genel Müdür","İdari Personel"]}},
 
-  {path:"historypaymentlist", component:HistorypaymentlistComponent,canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe","Genel Müdür"]}},
+  {path:"historypaymentlist", component:HistorypaymentlistComponent,canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe","Genel Müdür","İdari Personel"]}},
 
   {path:"login",  component:LoginComponent},
   {path:"**", pathMatch:"full", component:PagenotfoundComponent}

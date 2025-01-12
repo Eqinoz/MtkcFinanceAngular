@@ -41,12 +41,13 @@
                     }
                   </svg>
                 </span>
+                  @if (pswClass=="bi bi-eye"){
+                    <input  type="text"  class="form-control" id="passwordShow" formControlName="password" placeholder="password"  />
+                  } @else if (pswClass=="bi bi-eye-slash"){
+                    <input  type="password"  class="form-control" id="passwordHidden" formControlName="password" placeholder="password"  />
+                  }
                 </div>
-                @if (pswClass=="bi bi-eye"){
-                  <input  type="text"  class="form-control" id="passwordShow" formControlName="password" placeholder="password"  />
-                } @else if (pswClass=="bi bi-eye-slash"){
-                  <input  type="password"  class="form-control" id="passwordHidden" formControlName="password" placeholder="password"  />
-                }
+
 
 
               </div>
@@ -58,7 +59,7 @@
                 <label>Ünvan</label>
                 <select class="form-select" aria-label="Default select example" formControlName="titleName">
                   <option selected>Açılır Menüden Ünvan Seçiniz</option>
-                  @for (item of titles;track titles){
+                  @for (item of titles;track titles.keys()){
                     <option value="{{item.titleName}}"  >{{item.titleName}}</option>
                   }
 
@@ -68,7 +69,7 @@
                 <label>Şirket İsmi</label>
                 <select class="form-select" aria-label="Default select example" formControlName="companyName">
                   <option selected>Açılır Menüden Şirket Seçiniz</option>
-                  @for (item of companyies;track companyies){
+                  @for (item of companyies;track companyies.keys()){
                     <option value="{{item.companyName}}"   >{{item.companyName}}</option>
                   }
 

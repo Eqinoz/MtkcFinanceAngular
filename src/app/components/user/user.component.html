@@ -32,7 +32,7 @@
       } @else {
         <td>Pasif</td>
       }
-      @if (item == currentUsers){
+      @if (item == currentUsers && item.title!="Admin"){
         <td><button type="button" class="btn btn-danger" (click)="deleteUser(item)">Sil</button></td>
       }
     </tr>

@@ -47,6 +47,9 @@ export class UserComponent implements OnInit {
         }
     }
     deleteUser(user:User){
+    if (user.companyName=="Admin" || user.title=="Admin"){
+      this.toastrService.error("Admin Silinemez!","Dikkat")
+    }
     this.userService.delUsers(user.id).subscribe(response=> {
       this.responseModel=response.message;
       //this.users= this.users.filter(user=>user.id !== user.id)

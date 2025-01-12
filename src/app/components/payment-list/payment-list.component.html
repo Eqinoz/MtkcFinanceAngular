@@ -29,12 +29,15 @@
       <td>{{item.paymentType}}</td>
       <td>{{item.description}}</td>
         @if (item==currentPaymentList){
-          <td>
-            <button
-              type="button"
-              class="btn btn-success"
-              (click)="addHistoryPayment(item);deletePayment(item.id)">Öde</button>
-          </td>
+          @if (userRole=="Admin" || userRole=="Muhasebe") {
+            <td>
+              <button
+                type="button"
+                class="btn btn-success"
+                (click)="addHistoryPayment(item);deletePayment(item.id)">Öde</button>
+            </td>
+          }
+
         }
       </tr>
 
