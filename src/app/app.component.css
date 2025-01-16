@@ -1,0 +1,34 @@
+/* Sayfa genel stili */
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* container-fluid tam yüksekliği kaplar */
+.container-fluid {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Görünüm alanının tamamını kapla */
+}
+
+/* İçerik alanı */
+.content {
+  flex: 1; /* Esnek bir alan oluştur */
+  padding: 20px; /* İçerik için biraz boşluk ekle */
+}
+
+/* Navbar */
+app-navi {
+  flex-shrink: 0; /* Yüksekliği sabit kalır */
+}
+
+/* Footer */
+app-footer {
+  flex-shrink: 0; /* Footer da sabit yükseklikte kalır */
+  background: #f8f9fa; /* Örnek bir arka plan rengi */
+  padding: 10px 20px; /* Boşluk */
+  text-align: center; /* Ortala */
+  border-top: 1px solid #ddd; /* Üst çizgi */
+}

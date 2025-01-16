@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {JwtService} from '../../services/jwthelper.service';
+import {routes} from '../../app.routes';
 
 @Component({
   selector: 'app-navi',
@@ -14,12 +15,18 @@ export class NaviComponent implements OnInit {
 
   userRole: any;
   userName: any;
-  setSelectPage:string;
+  setSelectPage:string="";
+  currentUrl:string;
 
-  constructor(private jwtService: JwtService) {
+  constructor(private jwtService: JwtService,private router: Router,
+              private route: ActivatedRoute,) {
   }
 
   ngOnInit(): void {
+    this.router.events.subscribe(event => {
+      this.currentUrl=this.router.url;
+      this.setCurrentPage(this.currentUrl);
+    })
     const token = localStorage.getItem('token');
     if (token) {
       this.userRole = this.jwtService.getUserRole(token);
@@ -28,16 +35,17 @@ export class NaviComponent implements OnInit {
     }
   }
 
-  getSelectPage(page:string){
-    this.setSelectPage=page;
-  }
-  setCurrentPage(page:string){
-    if (page==this.setSelectPage){
-      return "nav-bar active";
+  getSelectPage(getpage:string){
+    if(this.currentUrl==getpage){
+      return "nav-link active";
     }
     else{
-      return "nav-bar";
+      return "nav-link";
     }
+
+  }
+  setCurrentPage(page:string){
+    this.getSelectPage(page);
   }
   logout() {
     localStorage.clear();

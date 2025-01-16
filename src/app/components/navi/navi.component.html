@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="">Mtkc</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,13 +7,12 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         @if (userRole=="Admin" || userRole=="Muhasebe" || userRole=="Genel Müdür"){
-          <a class="nav-link " (click)="setCurrentPage('Şirket')"   routerLink="/company">Şirketler</a>
-          <a class="nav-link" (click)="setCurrentPage('Type')" routerLink="/paymenttypes">Ödeme Tipleri</a>
-          <a class="nav-link" (click)="setCurrentPage('Users')" routerLink="/users">Kullanıcılar</a>
+          <a (click)="setCurrentPage('/company')" [class]="getSelectPage('/company')"    routerLink="/company">Şirketler</a>
+          <a (click)="setCurrentPage('Type')" [class]="getSelectPage('/paymenttypes')"  routerLink="/paymenttypes">Ödeme Tipleri</a>
+          <a (click)="setCurrentPage('Users')" [class]="getSelectPage('/users')" routerLink="/users">Kullanıcılar</a>
         }
         <a class="nav-link" (click)="setCurrentPage('Ödeme')" routerLink="/paymentlist">Ödeme Listesi</a>
         <a class="nav-link" (click)="setCurrentPage('History')" routerLink="/historypaymentlist">Geçmiş Ödeme Listesi</a>
-        <a class="nav-link disabled" aria-disabled="true"></a>
 
 
 
@@ -25,9 +24,6 @@
         {{userName}}
       </button>
       <ul class="dropdown-menu">
-
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
         <li><hr class="dropdown-divider"></li>
         <li><a class="dropdown-item" (click)="logout()" routerLink="/login">Çıkış</a></li>
       </ul>

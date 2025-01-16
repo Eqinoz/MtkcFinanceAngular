@@ -13,6 +13,7 @@ import {HistoryPaymentListService} from '../../services/history-payment-list.ser
 import {ToastrService} from 'ngx-toastr';
 import {JwtService} from '../../services/jwthelper.service';
 import {iterator} from 'rxjs/internal/symbol/iterator';
+import {ExcelService} from '../../services/excel.service';
 
 
 
@@ -38,14 +39,25 @@ export class PaymentListComponent implements OnInit {
   userRole: string;
 
   constructor(private paymentListService:PaymentListService,private historyPayment: HistoryPaymentListService,
-              private toastr: ToastrService, private jwtService: JwtService) {
+              private toastr: ToastrService, private jwtService: JwtService,
+              private excelService: ExcelService,) {
   }
   exportToExcel(){
-    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.paymentLists);
-    const workbook: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook,worksheet,"Sheet1");
+    const headerMap = {
+      dateAdded: 'Eklendiği Tarih',
+      userName: 'Ekleyen Kişi',
+      companyName: 'Şirket',
+      paymentOfPlace: 'Ödeme Yapılacak Firma',
+      paymentType: 'Ödeme Şekli',
+      price: 'Tutar',
+      description: 'Açıklama',
 
-    XLSX.writeFile(workbook,"ödeme.xlsx");
+    }
+   // const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.paymentLists);
+   // const workbook: XLSX.WorkBook = XLSX.utils.book_new();
+   // XLSX.utils.book_append_sheet(workbook,worksheet,"Sheet1");
+   // XLSX.writeFile(workbook,"ödeme.xlsx");
+    this.excelService.generateExcel(this.paymentLists,'Ödeme Listesi',headerMap)
   }
 
     ngOnInit(): void {

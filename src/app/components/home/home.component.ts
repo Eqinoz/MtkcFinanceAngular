@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NaviComponent} from '../navi/navi.component';
+import {DovizService} from '../../services/doviz.service';
 
 
 @Component({
@@ -11,6 +12,15 @@ import {NaviComponent} from '../navi/navi.component';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  currencies:any;
+
+  constructor(private dovizService: DovizService) {
+  }
+    ngOnInit(): void {
+        this.dovizService.getDoviz().subscribe(data => {
+          this.currencies=data;
+        })
+    }
 
 }

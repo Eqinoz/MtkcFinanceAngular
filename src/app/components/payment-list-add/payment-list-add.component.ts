@@ -53,15 +53,14 @@ export class PaymentListAddComponent implements OnInit {
         if (this.paymentListForm.valid){
           let paymentListModel = Object.assign({}, this.paymentListForm.value);
           this.paymentListService.add(paymentListModel).subscribe(data => {
-            console.log(data);
             this.toastrService.success("Ödeme Eklendi","Başarılı")
+            this.paymentListForm.reset({userName:this.userName});
           })
         }
     }
 
     getUserName(){
     this.userName=this.jwtService.getUserName(localStorage.getItem("token"));
-    console.log(this.userName)
     }
 
     getTitle(){

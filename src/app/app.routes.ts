@@ -19,7 +19,7 @@ export const routes: Routes = [
   {path:"",  component:HomeComponent, canActivate:[loginGuard]},
   {path:"company", component:CompanyComponent , canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe","Genel Müdür"]}},
   {path:"company/add", component:CompanyAddComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe","Genel Müdür"]}},
-  {path:"company/:id", component:CompanyComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe","Genel Müdür"]} },
+
 
   {path:"users", component:UserComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe","Genel Müdür"]}},
   {path:"users/add", component:UserAddComponent, canActivate:[loginGuard, roleGuardGuard], data:{roles:["Admin","Muhasebe","Genel Müdür"]}},

@@ -85,11 +85,9 @@ export class UserAddComponent implements OnInit {
   pswHidden() {
     if (this.pswShow == true) {
       this.pswClass = "bi bi-eye-slash"
-      console.log(this.pswClass)
 
     } else if (this.pswShow == false) {
       this.pswClass = "bi bi-eye"
-      console.log(this.pswClass);
 
     }
 

@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
 
       this.authService.login(loginModel).subscribe({
         next:(response) =>{
-          console.log()
           this.toastr.success('Giriş Başarılı!',"Başarılı")
           localStorage.setItem("token",response.data.token);
           let url = this.authService.redirectUrl
